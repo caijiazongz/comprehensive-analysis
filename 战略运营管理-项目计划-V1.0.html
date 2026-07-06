@@ -137,27 +137,59 @@ tbody td{padding:8px 12px;border-bottom:1px solid var(--gray3);vertical-align:mi
 .stage-card .stage-phases{font-size:12px;color:var(--gray5);line-height:1.8}
 .stage-card .stage-phases .ph{display:inline-block;background:var(--gray1);border-radius:4px;padding:2px 8px;margin:2px;font-size:11px}
 
-/* ── Gantt ── */
-.gantt-wrap{background:var(--white);border-radius:var(--r);padding:24px;box-shadow:var(--shadow);margin-bottom:20px;overflow-x:auto}
-.gantt-wrap h3{font-size:15px;color:var(--navy);margin-bottom:4px}
-.gantt-wrap .chart-note{font-size:11px;color:var(--gray4);margin-bottom:18px}
-.gantt{display:grid;grid-template-columns:220px 1fr;gap:0;font-size:12px;min-width:760px}
-.gantt-head{display:contents}
-.gantt-head .gh-empty{background:var(--navy);color:var(--white);padding:10px 12px;font-weight:700;font-size:11px;border-right:1px solid rgba(255,255,255,.1)}
-.gantt-months{display:grid;grid-template-columns:repeat(7,1fr);background:var(--navy);color:var(--white)}
-.gantt-months div{padding:10px 6px;text-align:center;font-weight:700;font-size:11px;border-right:1px solid rgba(255,255,255,.1)}
-.gantt-row{display:contents}
-.gantt-label{background:var(--gray2);padding:9px 12px;border-bottom:1px solid var(--gray3);border-right:1px solid var(--gray3);display:flex;align-items:center;gap:6px;font-size:12px}
-.gantt-label .ph-num{background:var(--navy);color:var(--white);border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:10px;font-weight:700;flex-shrink:0}
-.gantt-track{position:relative;background:var(--gray1);border-bottom:1px solid var(--gray3)}
-.gantt-bar{position:absolute;top:50%;transform:translateY(-50%);height:20px;border-radius:4px;display:flex;align-items:center;justify-content:center;font-size:10px;color:var(--white);font-weight:700;white-space:nowrap;padding:0 8px;overflow:hidden}
-.gantt-bar.s1{background:linear-gradient(90deg,var(--stage1),var(--blue2))}
-.gantt-bar.s2{background:linear-gradient(90deg,var(--stage2),var(--teal2))}
-.gantt-bar.s3{background:linear-gradient(90deg,var(--stage3),var(--gold2))}
-.gantt-bar.s4{background:linear-gradient(90deg,var(--stage4),#9b6dd6)}
-.gantt-bar.milestone{background:var(--red);height:22px}
-.gantt-today{position:absolute;top:0;bottom:0;width:2px;background:var(--red);z-index:5}
-.gantt-today::after{content:'今日';position:absolute;top:-18px;left:50%;transform:translateX(-50%);font-size:9px;color:var(--red);font-weight:700;white-space:nowrap}
+/* ── Gantt V2（参考PPT甘特图样式优化） ── */
+.gantt-wrap{background:var(--white);border-radius:var(--r);padding:28px;box-shadow:var(--shadow);margin-bottom:24px;overflow-x:auto}
+.gantt-wrap h3{font-size:16px;color:var(--navy);margin-bottom:2px}
+.gantt-wrap .chart-note{font-size:11px;color:var(--gray4);margin-bottom:16px;line-height:1.6}
+
+/* 表头行：项目阶段 | 6月-12月 */
+.gantt-header{display:grid;grid-template-columns:280px repeat(7,1fr);min-width:900px;background:var(--navy);border-radius:6px 6px 0 0;overflow:hidden}
+.gantt-header-cell{color:var(--white);padding:11px 14px;font-weight:700;font-size:13px;text-align:center;border-right:1px solid rgba(255,255,255,.08)}
+.gantt-header-cell:first-child{text-align:left;padding-left:18px}
+.gantt-header-cell:last-child{border-right:none;border-radius:0 6px 0 0}
+
+/* 每一行：左侧信息区 + 右侧时间轴 */
+.gantt-row{display:grid;grid-template-columns:280px repeat(7,1fr);min-width:900px;align-items:center;transition:background .15s}
+.gantt-row:nth-child(even){background:#f8fafc}
+.gantt-row:hover{background:var(--sky)}
+.gantt-row{border-bottom:1px solid #e8ecf1}
+
+/* 左侧：序号圆标 + 阶段名 + 日期 */
+.gantt-info{display:flex;align-items:center;gap:10px;padding:10px 16px;border-right:1px solid #e8ecf1;height:100%}
+.gantt-num{width:26px;height:26px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:var(--white);flex-shrink:0}
+.gantt-num.s1{background:#1d6fa4}
+.gantt-num.s2{background:#0d8a6f}
+.gantt-num.s3{background:#c0860a}
+.gantt-num.s4{background:#6c3db5}
+.gantt-name{font-size:13px;font-weight:600;color:var(--navy);min-width:110px;white-space:nowrap}
+.gantt-date-label{font-size:11.5px;color:var(--gray4);font-weight:500;margin-left:auto}
+
+/* 右侧时间轴区域（7列 = 7个月） */
+.gantt-timeline{position:relative;display:contents}  /* 占满剩余列 */
+.gantt-track{position:relative;height:38px;margin:4px auto;padding:0 4px}
+.gantt-track::before{content:'';position:absolute;left:0;right:0;top:50%;height:1px;background:#e0e5eb;z-index:0}
+.gantt-bar{position:absolute;top:50%;transform:translateY(-50%);height:26px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;color:var(--white);white-space:nowrap;padding:0 10px;z-index:2;box-shadow:0 1px 4px rgba(0,0,0,.12);letter-spacing:.3px}
+.gantt-bar.s1{background:#1d6fa4}
+.gantt-bar.s1:hover{background:#175a8a}
+.gantt-bar.s2{background:#0d8a6f}
+.gantt-bar.s2:hover{background:#0b735c}
+.gantt-bar.s3{background:#c0860a}
+.gantt-bar.s3:hover{background:#a37209}
+.gantt-bar.s4{background:#6c3db5}
+.gantt-bar.s4:hover{background:#593296}
+
+/* 今日线 */
+.gantt-today-line{position:absolute;top:0;bottom:0;width:2px;background:var(--red);z-index:6;pointer-events:none}
+.gantt-today-line::before{content:'今日';position:absolute;top:-17px;left:50%;transform:translateX(-50%) translateX(-50%);font-size:9px;color:var(--red);font-weight:800;white-space:nowrap;letter-spacing:.5px}
+
+/* 图例 */
+.gantt-legend{display:flex;justify-content:center;gap:32px;padding:16px 0 4px;flex-wrap:wrap}
+.gantt-legend-item{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--gray5)}
+.gantt-legend-dot{width:22px;height:12px;border-radius:3px}
+.gantt-legend-dot.s1{background:#1d6fa4}
+.gantt-legend-dot.s2{background:#0d8a6f}
+.gantt-legend-dot.s3{background:#c0860a}
+.gantt-legend-dot.s4{background:#6c3db5}
 
 /* ── Milestone Timeline ── */
 .milestone-list{display:flex;flex-direction:column;gap:0;position:relative}
@@ -432,15 +464,19 @@ tbody td{padding:8px 12px;border-bottom:1px solid var(--gray3);vertical-align:mi
   <div class="gantt-wrap">
     <h3>📅 全周期甘特图 · 11 阶段并行/串行视图</h3>
     <p class="chart-note">注：阶段 ⑨ 职能战略制定与 ⑦ 关键任务制定、⑧ 年度商业计划制定并行推进；阶段 ⑩ 总成需各阶段成果齐备后汇编</p>
-    <div class="gantt">
-      <div class="gantt-head">
-        <div class="gh-empty">项目阶段</div>
-        <div class="gantt-months">
-          <div>6月</div><div>7月</div><div>8月</div><div>9月</div><div>10月</div><div>11月</div><div>12月</div>
-        </div>
-      </div>
-      <!-- Gantt rows generated by JS -->
-      <div id="ganttBody"></div>
+    
+    <!-- 表头 -->
+    <div class="gantt-header" id="ganttHeader"></div>
+
+    <!-- 数据行（JS动态渲染） -->
+    <div id="ganttBody"></div>
+
+    <!-- 图例 -->
+    <div class="gantt-legend">
+      <div class="gantt-legend-item"><span class="gantt-legend-dot s1"></span><strong>前期准备阶段</strong></div>
+      <div class="gantt-legend-item"><span class="gantt-legend-dot s2"></span><strong>战略分析阶段</strong></div>
+      <div class="gantt-legend-item"><span class="gantt-legend-dot s3"></span><strong>任务规划阶段</strong></div>
+      <div class="gantt-legend-item"><span class="gantt-legend-dot s4"></span><strong>职能与总成阶段</strong></div>
     </div>
   </div>
 
@@ -675,29 +711,65 @@ function dateToPercent(mmdd){
 }
 
 function renderGantt(){
+  const months = ["6月","7月","8月","9月","10月","11月","12月"];
+  // 渲染表头
+  document.getElementById("ganttHeader").innerHTML =
+    '<div class="gantt-header-cell">项目阶段</div>' +
+    months.map(m => `<div class="gantt-header-cell">${m}</div>`).join("");
+
+  // 每行：左侧信息 + 7列时间轴（每列一个gantt-track）
   const body = document.getElementById("ganttBody");
   let html = "";
   PHASES.forEach(p=>{
+    // 左侧信息
+    const info = `
+      <div class="gantt-info">
+        <span class="gantt-num s${p.stage}">${p.n}</span>
+        <span class="gantt-name">${p.name}</span>
+        <span class="gantt-date-label">${p.start.replace(".",".")}-${p.end.replace(".",".")}</span>
+      </div>`;
+
+    // 右侧7列：每列是一个track，bar用绝对定位跨列
+    let cols = "";
     const left = dateToPercent(p.start);
     const right = dateToPercent(p.end);
-    const width = Math.max(2,right-left);
-    html += `<div class="gantt-row">
-      <div class="gantt-label"><span class="ph-num">${p.n}</span>${p.name}</div>
-      <div class="gantt-track">
-        <div class="gantt-bar s${p.stage}" style="left:${left}%;width:${width}%" title="${p.name} ${p.start}-${p.end} (${p.days}天)">${p.start}-${p.end}</div>
-      </div>
-    </div>`;
+    for(let i=0;i<7;i++){
+      cols += `<div class="gantt-track"></div>`;
+    }
+
+    html += `<div class="gantt-row">${info}${cols}</div>`;
   });
-  // 今日参考线（2026-07-06）
-  const todayPct = dateToPercent("07.06");
-  // 在最后一行track添加today线
+
   body.innerHTML = html;
-  // 给所有track加today线
-  document.querySelectorAll(".gantt-track").forEach(t=>{
-    const today = document.createElement("div");
-    today.className="gantt-today";
-    today.style.left = todayPct+"%";
-    t.appendChild(today);
+
+  // 在每个row的tracks中放置bar和today线
+  const todayPct = dateToPercent("07.06");
+  document.querySelectorAll(".gantt-row").forEach((row, idx) => {
+    const p = PHASES[idx];
+    const tracks = row.querySelectorAll(".gantt-track");
+    
+    // 创建 bar（跨越多列，使用百分比定位）
+    const leftPct = dateToPercent(p.start);
+    const rightPct = dateToPercent(p.end);
+    const widthPct = Math.max(3, rightPct - leftPct);
+
+    // 把bar放在第一个track里
+    const firstTrack = tracks[0];
+    const bar = document.createElement("div");
+    bar.className = `gantt-bar s${p.stage}`;
+    bar.style.left = leftPct + "%";
+    bar.style.width = widthPct + "%";
+    // 根据宽度决定是否显示日期文字
+    if (widthPct > 12) {
+      bar.textContent = `${p.start} - ${p.end}`;
+    }
+    firstTrack.appendChild(bar);
+
+    // 今日线放在第一个track
+    const todayLine = document.createElement("div");
+    todayLine.className = "gantt-today-line";
+    todayLine.style.left = todayPct + "%";
+    firstTrack.appendChild(todayLine);
   });
 }
 
