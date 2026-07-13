@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>战略运营管理 · 项目计划 V2.0（2026-2028年度）</title>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --navy:#0f2744;--blue:#1d6fa4;--blue2:#2489c8;
+  --teal:#0d8a6f;--gold:#c0860a;--purple:#6c3db5;--orange:#e67e22;
+  --gray1:#f7f9fc;--gray2:#eef2f7;--gray3:#d1dae8;--gray4:#8a9bb5;--gray5:#4a5a72;
+  --text:#1a2a3a;--white:#fff;
+  --r:10px;--r2:6px;--shadow:0 2px 12px rgba(15,39,68,.12);
+  --s1:#1d6fa4;--s2:#0d8a6f;--s3:#c0860a;--s4:#6c3db5;
+  --decode:#b8336a;--decode2:#7a1f47;
+}
+body{font-family:"Microsoft YaHei","PingFang SC",system-ui,sans-serif;background:var(--gray1);color:var(--text);line-height:1.7;font-size:14px}
+a{color:var(--blue);text-decoration:none}
+h1,h2,h3,h4{font-weight:700;line-height:1.3}
+
+.header{background:linear-gradient(135deg,#001a33 0%,#0f2744 30%,#0d4f87 70%,#0a6e4a 100%);color:#fff;padding:40px 36px 28px}
+.header h1{font-size:24px;margin-bottom:6px}
+.header .subtitle{opacity:.85;font-size:13px;margin-bottom:12px}
+.header-tags{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:12px}
+.htag{background:rgba(255,255,255,.15);border:1px solid rgba(255,255,255,.25);border-radius:20px;padding:3px 12px;font-size:11px}
+.htag.decode{background:rgba(184,51,106,.45);border-color:rgba(255,150,200,.5)}
+.htag.live{background:rgba(39,174,96,.3);border-color:rgba(39,174,96,.5)}
+
+.nav{position:sticky;top:0;z-index:100;background:var(--navy);display:flex;overflow-x:auto;border-bottom:2px solid var(--blue);box-shadow:0 2px 8px rgba(0,0,0,.15)}
+.nav::-webkit-scrollbar{height:3px}
+.nav a{color:rgba(255,255,255,.75);white-space:nowrap;padding:10px 13px;font-size:12px;transition:all .2s;border-bottom:3px solid transparent}
+.nav a:hover,.nav a.active{color:#fff;background:rgba(255,255,255,.08);border-bottom-color:var(--gold)}
+.nav a.decode{color:#ffb3d1;border-bottom-color:var(--decode)}
+.nav a.decode:hover{background:rgba(184,51,106,.25)}
+
+.container{max-width:1200px;margin:0 auto;padding:24px 28px}
+
+.section{margin-bottom:40px;scroll-margin-top:56px}
+.section-title{display:flex;align-items:center;gap:10px;margin-bottom:14px;padding-bottom:8px;border-bottom:2px solid var(--gray3)}
+.section-title h2{font-size:18px;color:var(--navy)}
+.section-title .icon{font-size:20px}
+.section-title .num{width:28px;height:28px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;color:#fff;flex-shrink:0}
+.section-title .num.s1{background:var(--s1)}.section-title .num.s2{background:var(--s2)}
+.section-title .num.s3{background:var(--s3)}.section-title .num.s4{background:var(--s4)}
+.section-title .num.decode{background:var(--decode)}
+.section-title .badge{background:var(--navy);color:#fff;border-radius:4px;padding:2px 8px;font-size:10px;font-weight:700}
+.section-title .badge.decode{background:var(--decode)}
+
+/* 战略解码专章高亮 */
+.decode-hero{background:linear-gradient(135deg,#7a1f47 0%,#b8336a 50%,#c0860a 100%);color:#fff;border-radius:var(--r);padding:24px;margin-bottom:16px;box-shadow:var(--shadow)}
+.decode-hero h3{color:#fff;font-size:16px;margin-bottom:8px}
+.decode-hero p{color:rgba(255,255,255,.92);font-size:13px}
+
+.card{background:#fff;border-radius:var(--r);padding:18px;box-shadow:var(--shadow);border-top:4px solid var(--blue);margin-bottom:14px}
+.card.s1{border-top-color:var(--s1)}.card.s2{border-top-color:var(--s2)}
+.card.s3{border-top-color:var(--s3)}.card.s4{border-top-color:var(--s4)}
+.card.decode{border-top-color:var(--decode)}
+.card h3{font-size:14px;color:var(--navy);margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.card p,.card li{font-size:13px;color:var(--gray5);line-height:1.8}
+.card ul{padding-left:16px;margin-top:4px}
+
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.grid3{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.grid4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+@media(max-width:900px){.grid2,.grid3,.grid4{grid-template-columns:1fr}}
+
+.tbl-wrap{background:#fff;border-radius:var(--r);box-shadow:var(--shadow);overflow:auto;margin-bottom:14px}
+table{width:100%;border-collapse:collapse;font-size:12px}
+thead th{background:var(--navy);color:#fff;padding:8px 10px;text-align:left;white-space:nowrap;font-size:11px}
+tbody tr:nth-child(odd){background:var(--gray1)}
+tbody tr:hover{background:#e8f4fd}
+tbody td{padding:7px 10px;border-bottom:1px solid var(--gray3);vertical-align:top}
+.tag{display:inline-block;border-radius:10px;padding:2px 8px;font-size:10px;font-weight:700;white-space:nowrap}
+.tag.blue{background:#dbeafe;color:#1d4ed8}.tag.green{background:#dcfce7;color:#166534}
+.tag.gold{background:#fef3c7;color:#92400e}.tag.purple{background:#f3e8ff;color:#6b21a8}
+.tag.red{background:#fee2e2;color:#991b1b}.tag.gray{background:#f1f5f9;color:#475569}
+.tag.decode{background:#fce7f3;color:#b8336a}
+
+.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}
+@media(max-width:900px){.kpi-grid{grid-template-columns:repeat(2,1fr)}}
+.kpi{background:#fff;border-radius:var(--r);padding:14px;box-shadow:var(--shadow);border-left:4px solid var(--blue)}
+.kpi.green{border-left-color:var(--teal)}.kpi.gold{border-left-color:var(--gold)}
+.kpi.purple{border-left-color:var(--purple)}.kpi.decode{border-left-color:var(--decode)}
+.kpi-label{font-size:11px;color:var(--gray4);margin-bottom:4px}
+.kpi-val{font-size:21px;font-weight:800;color:var(--navy)}
+.kpi-note{font-size:11px;color:var(--gray4);margin-top:2px}
+
+.alert{background:linear-gradient(90deg,#fef3c7,#fff7ed);border:1px solid #fcd34d;border-radius:var(--r);padding:10px 16px;margin-bottom:14px;font-size:13px}
+.alert strong{color:var(--gold)}
+.alert.decode{background:linear-gradient(90deg,#fce7f3,#fdf2f8);border-color:#f9a8d4}
+.alert.decode strong{color:var(--decode)}
+
+/* one-pager 精简卡片 */
+.pager{background:#fff;border-radius:var(--r);box-shadow:var(--shadow);padding:18px;margin-bottom:14px;border-top:4px solid var(--blue)}
+.pager.s1{border-top-color:var(--s1)}.pager.s2{border-top-color:var(--s2)}
+.pager.s3{border-top-color:var(--s3)}.pager.s4{border-top-color:var(--s4)}
+.pager-head{display:flex;align-items:center;gap:8px;margin-bottom:10px}
+.pager-head .pn{width:24px;height:24px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;color:#fff;background:var(--blue)}
+.pager-head .pn.s1{background:var(--s1)}.pager-head .pn.s2{background:var(--s2)}.pager-head .pn.s3{background:var(--s3)}.pager-head .pn.s4{background:var(--s4)}
+.pager-head h3{font-size:15px;color:var(--navy)}
+.pager-head .meta{margin-left:auto;font-size:11px;color:var(--gray4)}
+.pager-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;font-size:12px}
+@media(max-width:700px){.pager-row{grid-template-columns:1fr}}
+.pager-row .col{padding:8px 10px;background:var(--gray1);border-radius:var(--r2)}
+.pager-row .col strong{color:var(--navy)}
+.pager-row .col ul{padding-left:14px;margin-top:3px}
+.pager-row .col li{font-size:11.5px;line-height:1.7}
+.pager-foot{margin-top:8px;font-size:11px;color:var(--gray4);border-top:1px dashed var(--gray3);padding-top:6px}
+
+/* SWOT */
+.swot-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:14px}
+@media(max-width:700px){.swot-grid{grid-template-columns:1fr}}
+.swot-box{border-radius:var(--r2);padding:14px;font-size:12px}
+.swot-box h4{font-size:13px;margin-bottom:6px}
+.swot-box ul{padding-left:14px}
+.swot-box li{margin-bottom:3px}
+.swot-s{background:#dcfce7;border:1px solid #86efac}.swot-s h4{color:#166534}
+.swot-w{background:#fee2e2;border:1px solid #fca5a5}.swot-w h4{color:#991b1b}
+.swot-o{background:#dbeafe;border:1px solid #93c5fd}.swot-o h4{color:#1d4ed8}
+.swot-t{background:#fef3c7;border:1px solid #fcd34d}.swot-t h4{color:#92400e}
+
+/* 解码流程步骤 */
+.decode-flow{display:flex;flex-wrap:wrap;gap:6px;align-items:center;margin:10px 0}
+.decode-step{background:var(--decode);color:#fff;padding:7px 14px;border-radius:var(--r2);font-size:12px;font-weight:600}
+.decode-step.alt{background:var(--decode2)}
+.decode-step.lite{background:#fce7f3;color:var(--decode2)}
+.decode-arrow{color:var(--gray4);font-size:14px}
+
+/* 模型卡片 */
+.model-card{background:#fff;border-radius:var(--r);padding:16px;box-shadow:var(--shadow);border-left:4px solid var(--purple);margin-bottom:14px}
+.model-card h3{font-size:14px;color:var(--purple);margin-bottom:8px}
+.model-card .mtag{display:inline-block;background:#f3e8ff;color:#6b21a8;border-radius:10px;padding:2px 8px;font-size:10px;font-weight:700;margin-bottom:6px}
+.diamond-wrap{display:flex;justify-content:center;margin:8px 0}
+.diamond-box{background:var(--gray1);border:1px solid var(--gray3);border-radius:var(--r2);padding:10px;text-align:center;font-size:12px;min-width:120px}
+.diamond-box strong{color:var(--navy);display:block;font-size:13px}
+.fiveforce{display:grid;grid-template-columns:1fr 1fr 1fr;gap:8px;margin:8px 0}
+@media(max-width:700px){.fiveforce{grid-template-columns:1fr}}
+.force-box{background:var(--gray1);border-radius:var(--r2);padding:10px;font-size:12px;text-align:center}
+.force-box.mid{background:#fee2e2;border:1px solid #fca5a5}
+.force-box strong{color:var(--navy);display:block}
+.bcg-grid{display:grid;grid-template-columns:1fr 1fr;grid-template-rows:1fr 1fr;gap:0;border:2px solid var(--navy);border-radius:var(--r2);overflow:hidden;margin:10px 0}
+.bcg-cell{padding:10px;font-size:11px;min-height:80px}
+.bcg-star{background:#dcfce7;border-right:2px solid var(--navy);border-bottom:2px solid var(--navy)}
+.bcg-q{background:#dbeafe;border-bottom:2px solid var(--navy)}
+.bcg-cow{background:#fef3c7;border-right:2px solid var(--navy)}
+.bcg-dog{background:#fee2e2}
+.bcg-cell strong{display:block;color:var(--navy);font-size:13px}
+.chart-box{position:relative;width:100%;height:300px;margin:8px 0}
+.chart-box.tall{height:340px}
+
+.footer{background:var(--navy);color:rgba(255,255,255,.7);text-align:center;padding:20px 28px;font-size:12px;line-height:2}
+.footer a{color:rgba(255,255,255,.6)}
+.footer strong{color:#fff}
+
+.export-bar{position:fixed;bottom:20px;right:20px;display:flex;flex-direction:column;gap:8px;z-index:200}
+.export-btn{width:40px;height:40px;border-radius:50%;border:none;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:16px;box-shadow:var(--shadow);transition:transform .2s}
+.export-btn:hover{transform:scale(1.1)}
+.export-btn.print{background:var(--navy);color:#fff}
+.export-btn.top{background:var(--blue2);color:#fff}
+
+@media print{.nav,.export-bar{display:none!important}.section{break-inside:avoid;margin-bottom:14px}body{font-size:11px}}
+</style>
+</head>
+<body>
+
+<div class="header">
+  <h1>战略运营管理 · 项目计划 V2.0</h1>
+  <p class="subtitle">深圳汉阳科技有限公司（Yarbo）｜ 2026-2028年度战略规划 ｜ BLM模型 · 11阶段 · 战略解码专章 · 分析模型库</p>
+  <div class="header-tags">
+    <span class="htag">V2.0 项目计划</span>
+    <span class="htag decode">★ 战略解码核心专章</span>
+    <span class="htag">8大分析模型</span>
+    <span class="htag live">● 一页一阶段精简版</span>
+    <span class="htag">2026.07—2026.12</span>
+  </div>
+</div>
+
+<nav class="nav" id="topNav">
+  <a href="#overview" class="active">总览</a>
+  <a href="#decode" class="decode">★ 战略解码专章</a>
+  <a href="#s1">① 项目准备</a>
+  <a href="#s2">② 差距分析</a>
+  <a href="#s3">③ 战略指引</a>
+  <a href="#s4">④ 市场洞察</a>
+  <a href="#s5">⑤ 战略意图</a>
+  <a href="#s6">⑥ 业务设计</a>
+  <a href="#s7">⑦ 关键任务</a>
+  <a href="#s8">⑧ 商业计划</a>
+  <a href="#s9">⑨ 职能战略</a>
+  <a href="#s10">⑩ 规划总成</a>
+  <a href="#s11">⑪ 战略宣导</a>
+  <a href="#models">分析模型库</a>
+</nav>
+
+<div class="container">
+
+<!-- ════ 总览 ════ -->
+<section class="section" id="overview">
+  <div class="section-title"><span class="icon">📊</span><h2>总览 · 项目全局</h2><span class="badge">一页纸</span></div>
+  <div class="alert"><strong>项目背景：</strong>汉阳科技（Yarbo）2015年创立，专注智能庭院服务机器人，首创1+N模块化理念。旗舰Yarbo S1（扫雪）、M1（割草）已进入北美/欧洲市场。本项目为2026-2028年度公司战略规划，周期2026.7.1—12.31。</div>
+  <div class="kpi-grid">
+    <div class="kpi"><div class="kpi-label">项目周期</div><div class="kpi-val">6个月</div><div class="kpi-note">2026.7.1—12.31</div></div>
+    <div class="kpi green"><div class="kpi-label">阶段数</div><div class="kpi-val">11阶段</div><div class="kpi-note">BLM全周期</div></div>
+    <div class="kpi gold"><div class="kpi-label">里程碑</div><div class="kpi-val">38项</div><div class="kpi-note">需EMT研讨</div></div>
+    <div class="kpi decode"><div class="kpi-label">战略解码</div><div class="kpi-val">专章</div><div class="kpi-note">★核心突出</div></div>
+  </div>
+  <div class="card">
+    <h3>🗂️ 11阶段路线图（一图掌握）</h3>
+    <div class="tbl-wrap" style="box-shadow:none;margin-bottom:0">
+      <table>
+        <thead><tr><th>阶段</th><th>名称</th><th>时间</th><th>核心目标</th><th>核心工具模板</th><th>关键交付物</th></tr></thead>
+        <tbody>
+          <tr><td>①</td><td><strong>项目准备</strong></td><td>7.1-7.17</td><td>组建项目组、明确目标范围、建立治理</td><td>项目计划V2</td><td>项目章程/计划表/任命书</td></tr>
+          <tr><td>②</td><td><strong>差距分析</strong></td><td>7.18-9.10</td><td>BSC回顾、业绩/机会差距识别</td><td>差距分析工具</td><td>差距分析报告/TOP差距清单</td></tr>
+          <tr><td>③</td><td><strong>战略指引</strong></td><td>9.11-9.30</td><td>目标分解、KPI设定、行动计划</td><td>战略指引模板</td><td>战略指引文件/KPI体系</td></tr>
+          <tr><td>④</td><td><strong>市场洞察</strong></td><td>7.18-8.31</td><td>PEST/竞品/客户/SWOT</td><td>市场洞察模板V1.0</td><td>市场洞察分析报告</td></tr>
+          <tr><td>⑤</td><td><strong>战略意图</strong></td><td>10.1-10.12</td><td>愿景使命、三年目标、CSF</td><td>战略意图模板</td><td>战略意图说明书</td></tr>
+          <tr><td>⑥</td><td><strong>业务设计</strong></td><td>10.15-10.25</td><td>客户选择、价值主张、盈利模式</td><td>业务设计模板</td><td>业务设计报告</td></tr>
+          <tr><td>⑦</td><td><strong>关键任务</strong></td><td>10.25-11.10</td><td>战略解码、任务分解、责任矩阵</td><td>关键任务模板</td><td>关键任务清单与责任矩阵</td></tr>
+          <tr><td>⑧</td><td><strong>商业计划</strong></td><td>12.1-12.12</td><td>年度目标、预算、里程碑</td><td>商业计划工具V1.0</td><td>年度商业计划书</td></tr>
+          <tr><td>⑨</td><td><strong>职能战略</strong></td><td>10.25-11.15</td><td>各职能线三年战略规划</td><td>职能战略模板</td><td>各职能战略方案</td></tr>
+          <tr><td>⑩</td><td><strong>规划总成</strong></td><td>11.15-11.30</td><td>汇编评审、KPI仪表盘</td><td>规划总成模板V1.0</td><td>战略规划总成报告</td></tr>
+          <tr><td>⑪</td><td><strong>战略宣导</strong></td><td>12.1-12.8</td><td>全员宣贯、目标签订</td><td>战略宣导模板V1.00</td><td>全员战略共识达成</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ════ ★ 战略解码核心专章 ════ -->
+<section class="section" id="decode">
+  <div class="section-title"><span class="num decode">★</span><h2>战略解码 · 核心专章</h2><span class="badge decode">本项目重点</span></div>
+
+  <div class="decode-hero">
+    <h3>为什么"战略解码"是本项目的核心枢纽？</h3>
+    <p>战略解码是连接<strong>"战略制定"</strong>与<strong>"战略执行"</strong>的桥梁——将公司战略意图转化为可衡量、可分解、可跟踪、可考核的关键任务与组织KPI。它横跨阶段③战略指引→④市场洞察→⑤战略意图→⑥业务设计→⑦关键任务，是决定"战略能否落地"的胜负手。本专章细化战略解码的工作细节、方法论、流程与输出物。</p>
+  </div>
+
+  <div class="alert decode"><strong>解码本质：</strong>战略目标 → 衡量指标 → 关键任务 → 子任务 → 行动计划，逐层拆解到岗位，实现"千斤重担人人挑，人人头上有指标"。</div>
+
+  <!-- 解码五步法 -->
+  <div class="card decode">
+    <h3>🧩 战略解码五步法（核心方法论）</h3>
+    <div class="decode-flow">
+      <span class="decode-step">① 战略目标输入</span><span class="decode-arrow">→</span>
+      <span class="decode-step alt">② 衡量指标转化</span><span class="decode-arrow">→</span>
+      <span class="decode-step">③ 关键任务分解</span><span class="decode-arrow">→</span>
+      <span class="decode-step alt">④ 责任矩阵锁定</span><span class="decode-arrow">→</span>
+      <span class="decode-step">⑤ 监控看板闭环</span>
+    </div>
+    <div class="tbl-wrap" style="box-shadow:none;margin:10px 0 0">
+      <table>
+        <thead><tr><th>步骤</th><th>工作内容</th><th>输入</th><th>输出</th><th>责任/工具</th></tr></thead>
+        <tbody>
+          <tr><td><strong>① 战略目标输入</strong></td><td>承接公司SP/BP战略意图，明确战略方向与年度重点</td><td>战略意图说明书(阶段⑤)、业务设计报告(阶段⑥)</td><td>战略目标清单（公司级）</td><td>战略运营部 · BLM模型</td></tr>
+          <tr><td><strong>② 衡量指标转化</strong></td><td>将战略目标转化为可量化的衡量指标（KPI/OKR），设定Y1/Y2/Y3目标值与权重</td><td>战略目标清单</td><td>KPI体系（财务/客户/运营/学习成长四维度）</td><td>战略指引模板·表2 KPI</td></tr>
+          <tr><td><strong>③ 关键任务分解</strong></td><td>按战略维度（市场/产品/运营/组织）拆解关键任务→子任务→行动计划，标注重要等级(Ⅰ/Ⅱ/Ⅲ)</td><td>KPI体系</td><td>关键任务清单、子任务、行动计划</td><td>关键任务模板·表1 任务清单</td></tr>
+          <tr><td><strong>④ 责任矩阵锁定</strong></td><td>用RACI矩阵明确每项任务的负责人(R)/执行人(A)/咨询人(C)/知会人(I)，配权重与交付节点</td><td>关键任务清单</td><td>责任分工矩阵、交付里程碑</td><td>关键任务模板·表2 责任分工</td></tr>
+          <tr><td><strong>⑤ 监控看板闭环</strong></td><td>建立月度进度跟踪+KPI汇总看板，红黄绿灯预警，偏差识别→纠偏→闭环</td><td>责任矩阵+进度数据</td><td>进度跟踪表、KPI看板、复盘材料</td><td>关键任务模板·表3/4</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 解码层级 -->
+  <div class="card decode">
+    <h3>🏬 战略解码四层级（逐层穿透）</h3>
+    <div class="decode-flow">
+      <span class="decode-step">公司级 SP</span><span class="decode-arrow">→</span>
+      <span class="decode-step alt">业务线级 BP</span><span class="decode-arrow">→</span>
+      <span class="decode-step">部门级 KPI</span><span class="decode-arrow">→</span>
+      <span class="decode-step alt">岗位级 OKR/PBC</span>
+    </div>
+    <div class="grid4">
+      <div style="padding:10px;background:var(--gray1);border-radius:var(--r2)"><strong style="color:var(--decode)">公司级</strong><br><span style="font-size:11px;color:var(--gray5)">三年战略规划SP，明确愿景/方向/三年目标，对应阶段⑤战略意图</span></div>
+      <div style="padding:10px;background:var(--gray1);border-radius:var(--r2)"><strong style="color:var(--decode)">业务线级</strong><br><span style="font-size:11px;color:var(--gray5)">年度商业计划BP，产品线/销售线/区域分解，对应阶段⑧商业计划</span></div>
+      <div style="padding:10px;background:var(--gray1);border-radius:var(--r2)"><strong style="color:var(--decode)">部门级</strong><br><span style="font-size:11px;color:var(--gray5)">部门KPI与关键任务，承接业务设计，对应阶段⑦关键任务+⑨职能战略</span></div>
+      <div style="padding:10px;background:var(--gray1);border-radius:var(--r2)"><strong style="color:var(--decode)">岗位级</strong><br><span style="font-size:11px;color:var(--gray5)">个人OKR/PBC绩效承诺，落地到人，对应阶段⑪战略宣导目标签订</span></div>
+    </div>
+  </div>
+
+  <!-- BEM模型 -->
+  <div class="card decode">
+    <h3>📐 BEM模型：战略执行与监控（Business Execution Management）</h3>
+    <p style="margin-bottom:8px">BEM是华为战略解码的核心方法，通过<strong>BLM战略方向→BEM解码→DSTE执行</strong>实现战略到执行闭环：</p>
+    <div class="tbl-wrap" style="box-shadow:none;margin-bottom:0">
+      <table>
+        <thead><tr><th>BEM环节</th><th>核心动作</th><th>关键工具</th><th>输出物</th></tr></thead>
+        <tbody>
+          <tr><td><strong>战略方向澄清</strong></td><td>明确战略控制点、关键成功因素CSF</td><td>战略意图模板·表4 CSF</td><td>CSF清单</td></tr>
+          <tr><td><strong>CSF解码为KPI</strong></td><td>将关键成功因素转化为可衡量指标，导出年度KPI</td><td>战略指引模板·表2 KPI</td><td>公司级KPI池</td></tr>
+          <tr><td><strong>KPI分解到组织</strong></td><td>按部门/产品线/区域分解KPI，形成组织绩效承诺</td><td>关键任务模板·表2 责任分工</td><td>组织KPI分解表</td></tr>
+          <tr><td><strong>关键任务导出</strong></td><td>从KPI反推必须打赢的关键任务（必赢之战）</td><td>关键任务模板·表1 任务清单</td><td>必赢之战清单</td></tr>
+          <tr><td><strong>执行监控</strong></td><td>月度复盘+季度评审+年度评估，红黄绿灯管理</td><td>关键任务模板·表3/4 + 规划总成·表5仪表盘</td><td>执行监控报告</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 必赢之战 -->
+  <div class="card decode">
+    <h3>🎯 必赢之战（Must-Win Battles）解码示例</h3>
+    <div class="tbl-wrap" style="box-shadow:none;margin-bottom:0">
+      <table>
+        <thead><tr><th>必赢之战</th><th>对应CSF</th><th>衡量KPI</th><th>关键任务</th><th>责任人</th><th>时限</th></tr></thead>
+        <tbody>
+          <tr><td><strong>MWB1 北美品牌入库</strong></td><td>品牌入库率</td><td>Home Depot入库率≥80%</td><td>渠道拓展/陈列优化/培训体系</td><td>营销中心总监</td><td>Q2</td></tr>
+          <tr><td><strong>MWB2 模块化新品上市</strong></td><td>新品上市数</td><td>M系列上市3款</td><td>产品定义/试产/量产/上市营销</td><td>研发中心总监</td><td>Q3</td></tr>
+          <tr><td><strong>MWB3 供应链降本</strong></td><td>采购降本</td><td>降本≥3000万</td><td>BOM重构/供应商优化/集采</td><td>供应链总监</td><td>Q4</td></tr>
+          <tr><td><strong>MWB4 经销渠道建设</strong></td><td>成熟经销商占比</td><td>成熟经销商≥75%</td><td>招商/赋能/分级管理</td><td>渠道经理</td><td>Q3</td></tr>
+          <tr><td><strong>MWB5 核心专利布局</strong></td><td>核心专利数</td><td>新增专利≥20项</td><td>专利挖掘/布局/防御</td><td>知识产权经理</td><td>Q4</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 解码会议机制 -->
+  <div class="card decode">
+    <h3>🔄 战略解码会议机制（务虚会→解码会→评审会）</h3>
+    <div class="grid3">
+      <div style="padding:10px;background:var(--gray1);border-radius:var(--r2)"><strong>① 战略务虚会</strong><br><span style="font-size:11px;color:var(--gray5)">管理层研讨战略方向/机会/资源，达成共识，输出战略假设清单</span></div>
+      <div style="padding:10px;background:var(--gray1);border-radius:var(--r2)"><strong>② 战略解码会</strong><br><span style="font-size:11px;color:var(--gray5)">将战略意图解码为KPI与关键任务，明确必赢之战与责任矩阵（阶段⑦核心）</span></div>
+      <div style="padding:10px;background:var(--gray1);border-radius:var(--r2)"><strong>③ 评审与签订会</strong><br><span style="font-size:11px;color:var(--gray5)">评审分解结果，签订组织/个人绩效承诺书（阶段⑩⑪）</span></div>
+    </div>
+  </div>
+
+  <!-- 解码输出物清单 -->
+  <div class="card decode">
+    <h3>📋 战略解码输出物清单（交付物总览）</h3>
+    <div class="grid2">
+      <div><strong style="color:var(--decode)">战略层输出</strong><ul style="margin-top:4px"><li>战略意图说明书</li><li>三年战略目标与CSF清单</li><li>业务设计报告（五要素）</li></ul></div>
+      <div><strong style="color:var(--decode)">解码层输出</strong><ul style="margin-top:4px"><li>公司级KPI体系（Y1/Y2/Y3）</li><li>必赢之战（MWB）清单</li><li>关键任务清单与子任务</li><li>RACI责任分工矩阵</li></ul></div>
+      <div><strong style="color:var(--decode)">执行层输出</strong><ul style="margin-top:4px"><li>年度商业计划书与预算</li><li>各职能战略方案</li><li>组织/岗位OKR与PBC</li></ul></div>
+      <div><strong style="color:var(--decode)">监控层输出</strong><ul style="margin-top:4px"><li>月度进度跟踪表</li><li>KPI红黄绿灯仪表盘</li><li>阶段性复盘材料</li><li>风险与应对矩阵</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<!-- ════ ① 项目准备 ════ -->
+<section class="section" id="s1">
+  <div class="pager s1">
+    <div class="pager-head"><span class="pn s1">①</span><h3>项目准备</h3><span class="meta">7.1—7.17</span></div>
+    <div class="pager-row">
+      <div class="col"><strong>🎯 核心目标</strong><ul><li>组建项目组、明确目标范围、建立治理机制</li><li>统一方法论与模板，建立沟通决策机制</li><li>发布启动通知与工具包</li></ul></div>
+      <div class="col"><strong>📦 关键交付物</strong><ul><li>项目章程、项目计划表（定稿）</li><li>经营班子任命书、启动通知</li><li>沟通机制文件、模板工具包</li></ul></div>
+      <div class="col"><strong>👥 资源配置</strong><ul><li>项目组15-20人（专职3-5）</li><li>骨干60-80人（兼职）</li><li>外部顾问2-3家</li><li>预算203-347万</li></ul></div>
+      <div class="col"><strong>⚠️ 高风险</strong><ul><li>战略方向判断失误</li><li>1+N边界过宽资源分散</li><li>巨头挤压竞争加剧</li><li>周期压缩深度不足</li></ul></div>
+    </div>
+    <div class="pager-foot"><strong>Excel工具：</strong>项目概述 / 阶段计划总表 / WBS / 里程碑 / 资源配置 / 风险应对（6表）</div>
+  </div>
+</section>
+
+<!-- ════ ② 差距分析 ════ -->
+<section class="section" id="s2">
+  <div class="pager s1">
+    <div class="pager-head"><span class="pn s1">②</span><h3>战略回顾及差距分析</h3><span class="meta">7.18—9.10 · BSC四维度</span></div>
+    <div class="pager-row">
+      <div class="col"><strong>🎯 核心方法</strong><ul><li>基于BSC四维度回顾年度战略执行</li><li>识别业绩差距与机会差距</li><li>制定改进举措</li></ul></div>
+      <div class="col"><strong>📦 关键交付物</strong><ul><li>战略差距分析报告</li><li>TOP级差距清单</li><li>改进举措与行动计划</li></ul></div>
+    </div>
+    <div class="pager-row">
+      <div class="col"><strong>📉 业绩差距</strong><span style="font-size:11px;color:var(--gray4)">现有结果 vs 期望值，靠高效执行填补，<u>不改业务设计</u></span><ul><li>差距领域→目标vs实际→差距率→根因→改进→责任人</li></ul></div>
+      <div class="col"><strong>💡 机会差距</strong><span style="font-size:11px;color:var(--gray4)">现有结果 vs 新业务设计结果，<u>需新业务设计</u>填补</span><ul><li>未抓机会→潜在损失→根因→新方向</li></ul></div>
+    </div>
+    <div class="pager-foot"><strong>Excel工具：</strong>封面 / 战略目标回顾 / KPI达成对比 / 业绩差距 / 机会差距 / 改进举措 / 季度汇总（7表）｜ <strong>BSC：</strong>财务·客户·内部运营·学习成长</div>
+  </div>
+</section>
+
+<!-- ════ ③ 战略指引 ════ -->
+<section class="section" id="s3">
+  <div class="pager s1">
+    <div class="pager-head"><span class="pn s1">③</span><h3>战略指引制定</h3><span class="meta">9.11—9.30 · 目标分解</span></div>
+    <div class="pager-row">
+      <div class="col"><strong>🎯 核心目标</strong><ul><li>战略方针逐级分解为部门承接目标</li><li>设定可量化KPI</li><li>形成可执行行动计划</li></ul></div>
+      <div class="col"><strong>📦 关键交付物</strong><ul><li>战略指引文件</li><li>目标分解表与KPI体系</li><li>行动计划与资源清单</li></ul></div>
+    </div>
+    <div class="pager-row">
+      <div class="col"><strong>📐 四大方针</strong><ul><li>保持增长：收入年复合≥30%</li><li>优化结构：经销占比≥40%</li><li>降本增效：成本降15%</li><li>风险可控：应收≤65天</li></ul></div>
+      <div class="col"><strong>四大布局</strong><ul><li>市场布局 · 客户布局</li><li>产品布局 · 渠道布局</li></ul></div>
+    </div>
+    <div class="pager-foot"><strong>Excel工具：</strong>战略目标分解 / KPI / 行动计划 / 资源需求 / 进度跟踪 / 风险评估 / 战略专题（7表）｜ <strong>KPI示例：</strong>营收增长率30→35→40%</div>
+  </div>
+</section>
+
+<!-- ════ ④ 市场洞察 ════ -->
+<section class="section" id="s4">
+  <div class="pager s2">
+    <div class="pager-head"><span class="pn s2">④</span><h3>市场洞察</h3><span class="meta">7.18—8.31 · PEST·竞品·客户·SWOT</span></div>
+    <div class="pager-row">
+      <div class="col"><strong>🎯 核心目标</strong><ul><li>系统洞察市场/竞争/客户/技术/能力</li><li>为战略制定提供事实基础</li></ul></div>
+      <div class="col"><strong>📦 关键交付物</strong><ul><li>市场洞察分析报告</li><li>竞争对手对标矩阵</li><li>客户调研报告、SWOT</li></ul></div>
+    </div>
+    <div class="pager-row">
+      <div class="col"><strong>🌍 PEST宏观</strong><ul><li>P关税/数据合规（威胁高）</li><li>E消费力波动（威胁中）</li><li>S庭院DIY文化（机会高）</li><li>T RTK降本/AI迭代（机会高）</li></ul></div>
+      <div class="col"><strong>🏆 竞品对标</strong><ul><li>Husqvarna（高端老牌）</li><li>Worx（性价比）</li><li>Segway Navimow（技术新锐）</li><li>Mammotion Luba（RTK先行）</li><li>Yarbo（模块化生态）</li></ul></div>
+    </div>
+    <div class="pager-foot"><strong>Excel工具：</strong>使用说明 / 数据字典 / 市场趋势 / 竞品对比 / 客户调研 / SWOT / 汇总看板（7表）｜ 详细分析模型见<a href="#models">分析模型库</a></div>
+  </div>
+</section>
+
+<!-- ════ ⑤ 战略意图 ════ -->
+<section class="section" id="s5">
+  <div class="pager s2">
+    <div class="pager-head"><span class="pn s2">⑤</span><h3>战略意图制定</h3><span class="meta">10.1—10.12 · 愿景·目标·CSF</span></div>
+    <div class="pager-row">
+      <div class="col"><strong>🔮 愿景使命</strong><ul><li>愿景：庭院智能服务机器人全球知名企业</li><li>使命：创造安全世界，共享智能生活</li><li>价值观：客户为中心·责任为本·务实·协作创新</li></ul></div>
+      <div class="col"><strong>📦 关键交付物</strong><ul><li>战略意图说明书</li><li>三年战略目标与KPI</li><li>CSF关键成功因素清单</li></ul></div>
+    </div>
+    <div class="pager-row">
+      <div class="col"><strong>📊 三年目标</strong><ul><li>财务：营收增30%→净利1亿</li><li>市场：覆盖率65%</li><li>产品：高端系列3款</li><li>组织：海外团队50人</li></ul></div>
+      <div class="col"><strong>🔑 CSF六要素</strong><ul><li>市场20%·产品20%·渠道15%</li><li>技术15%·组织15%·供应链15%</li></ul></div>
+    </div>
+    <div class="pager-foot"><strong>Excel工具：</strong>愿景使命 / 目标分解 / CSF / 挑战应对 / 资源 / 里程碑 / 跟踪 / 非财务指标 / 监控看板（10表）</div>
+  </div>
+</section>
+
+<!-- ════ ⑥ 业务设计 ════ -->
+<section class="section" id="s6">
+  <div class="pager s2">
+    <div class="pager-head"><span class="pn s2">⑥</span><h3>业务设计</h3><span class="meta">10.15—10.25 · 五要素</span></div>
+    <div class="pager-row">
+      <div class="col"><strong>🎯 核心目标</strong><ul><li>完成客户选择/价值主张/盈利模式/业务范围/战略控制点五要素</li></ul></div>
+      <div class="col"><strong>📦 关键交付物</strong><ul><li>业务设计报告（五要素）</li><li>业务目标与KPI跟踪表</li><li>流程梳理与资源配置</li></ul></div>
+    </div>
+    <div class="pager-row">
+      <div class="col"><strong>📐 五要素</strong><ul><li>①客户：北美/欧洲业主+B端+亚太</li><li>②价值主张：1+N模块化四季通用</li><li>③盈利：主机+配件+订阅+生态</li><li>④范围：扫雪/割草/吹落叶/清缝</li><li>⑤控制点：生态壁垒/专利/供应链</li></ul></div>
+      <div class="col"><strong>🔗 数据联动</strong><ul><li>各表通过"BD-xxx"编号关联</li><li>KPI完成率自动计算</li><li>风险等级=可能性×影响</li></ul></div>
+    </div>
+    <div class="pager-foot"><strong>Excel工具：</strong>使用说明 / 业务目标定义 / KPI跟踪 / 业务流程梳理 / 资源配置 / 风险评估（5表）</div>
+  </div>
+</section>
+
+<!-- ════ ⑦ 关键任务 ════ -->
+<section class="section" id="s7">
+  <div class="pager s3">
+    <div class="pager-head"><span class="pn s3">⑦</span><h3>关键任务制定</h3><span class="meta">10.25—11.10 · 战略解码</span></div>
+    <div class="pager-row">
+      <div class="col"><strong>🎯 核心目标</strong><ul><li>战略目标解码为关键任务/子任务</li><li>明确责任分工与时间节点</li><li>建立月度跟踪与KPI看板</li></ul></div>
+      <div class="col"><strong>📦 关键交付物</strong><ul><li>关键任务清单与责任矩阵</li><li>进度跟踪表（月度）</li><li>KPI汇总看板</li></ul></div>
+    </div>
+    <div class="pager-row">
+      <div class="col"><strong>📋 解码逻辑</strong><span style="font-size:11px">战略目标→衡量指标→关键任务→子任务→行动计划</span></div>
+      <div class="col"><strong>🏷️ 分类与等级</strong><ul><li>维度：市场/产品/运营/组织</li><li>等级：Ⅰ/Ⅱ/Ⅲ类</li></ul></div>
+    </div>
+    <div class="pager-foot"><strong>Excel工具：</strong>任务清单 / 责任分工 / 进度跟踪 / KPI汇总（4表）｜ <strong>解码细节详见</strong><a href="#decode">战略解码专章</a></div>
+  </div>
+</section>
+
+<!-- ════ ⑧ 商业计划 ════ -->
+<section class="section" id="s8">
+  <div class="pager s3">
+    <div class="pager-head"><span class="pn s3">⑧</span><h3>年度商业计划制定</h3><span class="meta">12.1—12.12 · BP分解</span></div>
+    <div class="pager-row">
+      <div class="col"><strong>🎯 核心目标</strong><ul><li>导入第一年战略目标</li><li>分解年度目标/策略/行动计划</li><li>编制预算框架</li></ul></div>
+      <div class="col"><strong>📦 关键交付物</strong><ul><li>年度商业计划书</li><li>财务/人力预算</li><li>里程碑与风险评估</li></ul></div>
+    </div>
+    <div class="pager-row">
+      <div class="col"><strong>📊 四维目标</strong><ul><li>财务：营收/毛利率（Q4）</li><li>客户：市占率（Q2）</li><li>运营：交付周期（Q3）</li><li>学习：核心岗位到位率（Q4）</li></ul></div>
+      <div class="col"><strong>📋 分解维度</strong><ul><li>产品线 / 销售线</li><li>区域 / 职能</li></ul></div>
+    </div>
+    <div class="pager-foot"><strong>Excel工具：</strong>封面 / 目录 / 业务概况 / 目标设定 / 资源预算 / 里程碑 / 风险 / 仪表盘（8表）</div>
+  </div>
+</section>
+
+<!-- ════ ⑨ 职能战略 ════ -->
+<section class="section" id="s9">
+  <div class="pager s4">
+    <div class="pager-head"><span class="pn s4">⑨</span><h3>职能战略制定</h3><span class="meta">10.25—11.15 · 职能承接</span></div>
+    <div class="pager-row">
+      <div class="col"><strong>🎯 核心目标</strong><ul><li>各职能线承接业务战略</li><li>制定三年战略规划</li><li>明确目标分解与关键任务</li></ul></div>
+      <div class="col"><strong>🏢 职能分工</strong><ul><li>研发：产品路线图/专利</li><li>供应链：降本/交付/良率</li><li>营销：品牌/渠道/市场</li><li>财务：预算/回款/风控</li></ul></div>
+    </div>
+    <div class="pager-foot"><strong>Excel工具：</strong>使用说明 / 战略目标分解 / 关键任务 / 资源配置 / 进度跟踪（5表）</div>
+  </div>
+</section>
+
+<!-- ════ ⑩ 规划总成 ════ -->
+<section class="section" id="s10">
+  <div class="pager s4">
+    <div class="pager-head"><span class="pn s4">⑩</span><h3>战略规划总成</h3><span class="meta">11.15—11.30 · 汇编评审</span></div>
+    <div class="pager-row">
+      <div class="col"><strong>🎯 核心目标</strong><ul><li>汇编各阶段成果</li><li>形成战略规划总报告</li><li>组织评审审批定稿</li></ul></div>
+      <div class="col"><strong>📦 关键交付物</strong><ul><li>战略规划总成报告（定稿）</li><li>KPI仪表盘与风险矩阵</li><li>审批记录</li></ul></div>
+    </div>
+    <div class="pager-row">
+      <div class="col"><strong>🔴🟡🟢 KPI仪表盘</strong><ul><li>绿灯≥90% ｜ 黄灯60-90%</li><li>红灯＜60%</li></ul></div>
+      <div class="col"><strong>⚠️ 风险矩阵</strong><ul><li>五类风险管控</li></ul></div>
+    </div>
+    <div class="pager-foot"><strong>Excel工具：</strong>封面 / 战略目标分解 / 关键举措里程碑 / 资源概览 / KPI仪表盘 / 风险矩阵（6表）</div>
+  </div>
+</section>
+
+<!-- ════ ⑪ 战略宣导 ════ -->
+<section class="section" id="s11">
+  <div class="pager s4">
+    <div class="pager-head"><span class="pn s4">⑪</span><h3>战略宣导</h3><span class="meta">12.1—12.8 · 全员共识</span></div>
+    <div class="pager-row">
+      <div class="col"><strong>🎯 核心目标</strong><ul><li>组织全员战略宣贯</li><li>确保理解战略方向与目标</li><li>完成目标签订与执行启动</li></ul></div>
+      <div class="col"><strong>📢 宣导要点</strong><ul><li>战略地图宣贯：愿景→目标→举措→任务</li><li>目标签订：年度承诺书</li><li>执行启动：月度看板+季度评审</li><li>方法论沉淀：滚动规划机制</li></ul></div>
+    </div>
+    <div class="pager-foot"><strong>Excel工具：</strong>使用说明 / 目标分解 / 任务跟踪 / 里程碑 / 风险管控 / 进度看板（6表）</div>
+  </div>
+</section>
+
+<!-- ════ 分析模型库 ════ -->
+<section class="section" id="models">
+  <div class="section-title"><span class="icon">🧮</span><h2>企业分析与竞争分析模型库</h2><span class="badge">8大模型</span></div>
+  <div class="alert"><strong>使用说明：</strong>本模型库服务于阶段④市场洞察与⑤战略意图，覆盖宏观环境、产业竞争、企业能力、战略定位四个分析层次，为战略制定提供框架支撑。</div>
+
+  <!-- 模型1 PESTEL -->
+  <div class="model-card">
+    <span class="mtag">宏观环境</span>
+    <h3>① PEST(EL) 宏观环境分析</h3>
+    <p style="margin-bottom:8px">在PEST基础上扩展为PESTEL，覆盖政治/经济/社会/技术/环境/法律六维度。</p>
+    <div class="tbl-wrap" style="box-shadow:none;margin-bottom:0">
+      <table>
+        <thead><tr><th>维度</th><th>关键趋势（Yarbo）</th><th>影响</th><th>应对</th></tr></thead>
+        <tbody>
+          <tr><td><span class="tag red">P 政治</span></td><td>海外关税/贸易政策变化</td><td>威胁·高</td><td>多区域布局，合规前置</td></tr>
+          <tr><td><span class="tag gold">E 经济</span></td><td>北美/欧洲消费力波动</td><td>威胁·中</td><td>强化性价比与融资方案</td></tr>
+          <tr><td><span class="tag green">S 社会</span></td><td>庭院DIY文化普及</td><td>机会·高</td><td>内容营销与场景教育</td></tr>
+          <tr><td><span class="tag blue">T 技术</span></td><td>RTK降本/AI视觉/固态电池</td><td>机会·高</td><td>提前布局研发与专利</td></tr>
+          <tr><td><span class="tag purple">E 环境</span></td><td>电动化替代燃油/碳排法规</td><td>机会·高</td><td>主打电动环保，对接补贴</td></tr>
+          <tr><td><span class="tag gray">L 法律</span></td><td>GDPR数据合规/产品认证</td><td>威胁·中</td><td>本地化数据方案，认证先行</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 模型2 钻石模型 -->
+  <div class="model-card">
+    <span class="mtag">产业竞争</span>
+    <h3>② 波特钻石模型（国家竞争优势）</h3>
+    <p style="margin-bottom:8px">从生产要素/需求条件/相关产业/企业战略四要素+机会与政府，分析Yarbo所在庭院机器人产业竞争力。</p>
+    <div class="grid4">
+      <div class="diamond-box"><strong>生产要素</strong>深圳供应链成熟、惠州/嘉善工厂、RTK/电池技术积累<br><span style="color:var(--teal);font-size:11px">★优势</span></div>
+      <div class="diamond-box"><strong>需求条件</strong>北美/欧洲高需求、严苛扫雪法规驱动刚性需求<br><span style="color:var(--teal);font-size:11px">★优势</span></div>
+      <div class="diamond-box"><strong>相关产业</strong>电池/激光雷达/AI芯片产业链完备，中国制造生态<br><span style="color:var(--teal);font-size:11px">★优势</span></div>
+      <div class="diamond-box"><strong>企业战略</strong>1+N模块化差异化、研发主导(70%)、出海全球化<br><span style="color:var(--gold);font-size:11px">待强化</span></div>
+    </div>
+    <p style="margin-top:8px;font-size:12px"><strong>机会：</strong>电动化浪潮/亚太新兴/技术降本 ｜ <strong>政府：</strong>中国出海支持/海外贸易壁垒（需关注）</p>
+  </div>
+
+  <!-- 模型3 SWOT -->
+  <div class="model-card">
+    <span class="mtag">综合分析</span>
+    <h3>③ SWOT 分析</h3>
+    <div class="swot-grid">
+      <div class="swot-box swot-s"><h4>✅ 优势 Strengths</h4><ul><li>1+N模块化生态独特，四季通用</li><li>软硬件自研，迭代速度快</li><li>北美/欧洲已有品牌基础</li><li>供应链成本优势</li></ul></div>
+      <div class="swot-box swot-w"><h4>❌ 劣势 Weaknesses</h4><ul><li>品牌知名度不及Husqvarna</li><li>渠道广度/售后覆盖不足</li><li>高端心智未建立</li><li>B端服务/备件体系薄弱</li></ul></div>
+      <div class="swot-box swot-o"><h4>🌟 机会 Opportunities</h4><ul><li>电动化智能化浪潮</li><li>RTK/AI/电池降本提效</li><li>亚太新兴市场增长</li><li>模块化生态延展新品类</li></ul></div>
+      <div class="swot-box swot-t"><h4>⚠️ 威胁 Threats</h4><ul><li>巨头加速布局挤压</li><li>关税贸易不确定性</li><li>价格战加剧</li><li>数据合规/专利纠纷</li></ul></div>
+    </div>
+  </div>
+
+  <!-- 模型4 企业能力(微观) -->
+  <div class="model-card">
+    <span class="mtag">企业能力（微观）</span>
+    <h3>④ 企业能力分析 · VRIO框架</h3>
+    <p style="margin-bottom:8px">从价值性/稀缺性/不可模仿性/组织化四维度评估Yarbo核心资源能力是否构成持续竞争优势。</p>
+    <div class="tbl-wrap" style="box-shadow:none;margin-bottom:0">
+      <table>
+        <thead><tr><th>核心能力</th><th>价值V</th><th>稀缺R</th><th>难模仿I</th><th>组织O</th><th>竞争优势</th></tr></thead>
+        <tbody>
+          <tr><td>1+N模块化架构</td><td>✔</td><td>✔</td><td>✔</td><td>✔</td><td><span class="tag green">持续竞争优势</span></td></tr>
+          <tr><td>低温扫雪技术(-25℃)</td><td>✔</td><td>✔</td><td>✔</td><td>✔</td><td><span class="tag green">持续竞争优势</span></td></tr>
+          <tr><td>RTK+视觉融合导航</td><td>✔</td><td>△</td><td>△</td><td>✔</td><td><span class="tag gold">暂时竞争优势</span></td></tr>
+          <tr><td>供应链成本</td><td>✔</td><td>△</td><td>✘</td><td>✔</td><td><span class="tag gray">竞争对等</span></td></tr>
+          <tr><td>渠道网络</td><td>✔</td><td>✘</td><td>✘</td><td>△</td><td><span class="tag red">竞争劣势</span></td></tr>
+          <tr><td>品牌心智</td><td>✔</td><td>✘</td><td>✘</td><td>△</td><td><span class="tag red">竞争劣势</span></td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+
+  <!-- 模型5 波特五力 -->
+  <div class="model-card">
+    <span class="mtag">产业竞争</span>
+    <h3>⑤ 波特五力模型</h3>
+    <div class="fiveforce">
+      <div class="force-box"><strong>供应商议价</strong>中低<br><span style="font-size:11px;color:var(--gray5)">电池/芯片集中度高，但多供应商可选</span></div>
+      <div class="force-box"><strong>购买者议价</strong>中<br><span style="font-size:11px;color:var(--gray5)">C端分散议价弱，B端大客户议价强</span></div>
+      <div class="force-box"><strong>潜在进入者</strong>中高<br><span style="font-size:11px;color:var(--gray5)">巨头(九号/大疆)有技术储备，门槛在低温与生态</span></div>
+      <div class="force-box"><strong>替代品</strong>中<br><span style="font-size:11px;color:var(--gray5)">传统燃油扫雪机/人工服务/外包园林</span></div>
+      <div class="force-box mid"><strong>同业竞争</strong>高<br><span style="font-size:11px;color:var(--gray5)">Husqvarna/Segway/Mammotion/Worx激烈</span></div>
+      <div class="force-box"><strong>总结</strong>产业盈利性中<br><span style="font-size:11px;color:var(--gray5)">靠差异化(模块化)与生态壁垒突围</span></div>
+    </div>
+  </div>
+
+  <!-- 模型6 波士顿矩阵 -->
+  <div class="model-card">
+    <span class="mtag">产品组合</span>
+    <h3>⑥ 波士顿矩阵（BCG）· Yarbo产品线映射</h3>
+    <p style="font-size:11px;color:var(--gray4);margin-bottom:6px">纵轴=市场增长率，横轴=相对市场份额</p>
+    <div class="bcg-grid">
+      <div class="bcg-cell bcg-star"><strong>⭐ 明星 Star</strong>高增长·高份额<br>M系列(中小庭院新品，2026CES)<br>→ 加大投入，巩固领先</div>
+      <div class="bcg-cell bcg-q"><strong>❓ 问题 Question</strong>高增长·低份额<br>亚太市场/喷洒采摘等新模块<br>→ 选择性投入，培育增长点</div>
+      <div class="bcg-cell bcg-cow"><strong>🐄 金牛 Cash Cow</strong>低增长·高份额<br>Y系列(北美扫雪成熟市场)<br>→ 榨取现金流，反哺明星</div>
+      <div class="bcg-cell bcg-dog"><strong>🐕 瘦狗 Dog</strong>低增长·低份额<br>边缘功能模块/早期原型<br>→ 收割或退出，释放资源</div>
+    </div>
+  </div>
+
+  <!-- 模型7 战略定位矩阵 -->
+  <div class="model-card">
+    <span class="mtag">战略定位</span>
+    <h3>⑦ 战略定位矩阵（价格-性能象限）</h3>
+    <div class="chart-box">
+      <canvas id="posChart" role="img" aria-label="战略定位矩阵散点图：横轴价格，纵轴性能/产品力">战略定位矩阵散点图</canvas>
+    </div>
+    <p style="font-size:12px"><strong>定位结论：</strong>Yarbo处于<strong>"高性价比·差异化"</strong>象限，以模块化生态在中高性能区建立差异化，避开Husqvarna高端与Worx低价红海，向右上(高价值高份额)迁移。</p>
+  </div>
+
+  <!-- 模型8 竞争力雷达图 -->
+  <div class="model-card">
+    <span class="mtag">竞争力对标</span>
+    <h3>⑧ 竞争力雷达图（Yarbo vs 主要竞品）</h3>
+    <div class="chart-box tall">
+      <canvas id="radarChart" role="img" aria-label="竞争力雷达图：Yarbo与三大竞品六维度对比">竞争力雷达图</canvas>
+    </div>
+    <div style="display:flex;flex-wrap:wrap;gap:14px;margin-top:4px;font-size:11px;color:var(--gray5)">
+      <span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#b8336a;margin-right:3px"></span>Yarbo</span>
+      <span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#1d6fa4;margin-right:3px"></span>Husqvarna</span>
+      <span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#0d8a6f;margin-right:3px"></span>Segway Navimow</span>
+      <span><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:#c0860a;margin-right:3px"></span>Mammotion Luba</span>
+    </div>
+    <p style="font-size:12px;margin-top:6px"><strong>结论：</strong>Yarbo在"模块化生态"维度领先，"成本"占优；短板在"渠道广度"与"品牌力"，需重点补强。</p>
+  </div>
+</section>
+
+</div>
+
+<div class="footer">
+  <strong>战略运营管理 · 项目计划 V2.0</strong><br>
+  深圳汉阳科技有限公司（Yarbo）｜ 2026-2028年度战略规划 ｜ BLM模型 · 11阶段 · 战略解码专章 · 8大分析模型<br>
+  数据来源：11个Excel工具模板 ｜ 一页一阶段精简版 ｜ 已部署至GitHub Pages<br>
+  © 2026 战略运营部 ｜ <a href="https://github.com/caijiazongz/comprehensive-analysis" target="_blank">Git仓库</a>
+</div>
+
+<div class="export-bar">
+  <button class="export-btn top" onclick="window.scrollTo({top:0,behavior:'smooth'})" title="回到顶部">⬆</button>
+  <button class="export-btn print" onclick="window.print()" title="打印/导出PDF">🖨</button>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.1/chart.umd.js"></script>
+<script>
+const navLinks=document.querySelectorAll(".nav a");
+const sections=document.querySelectorAll(".section");
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{
+    if(e.isIntersecting){
+      navLinks.forEach(l=>l.classList.remove("active"));
+      const t=document.querySelector('.nav a[href="#'+e.target.id+'"]');
+      if(t)t.classList.add("active");
+    }
+  });
+},{rootMargin:"-56px 0px -60% 0px"});
+sections.forEach(s=>observer.observe(s));
+
+// 战略定位矩阵散点图
+new Chart(document.getElementById('posChart'),{
+  type:'scatter',
+  data:{datasets:[
+    {label:'Yarbo',data:[{x:3,y:4}],backgroundColor:'#b8336a',pointRadius:9},
+    {label:'Husqvarna',data:[{x:5,y:4.5}],backgroundColor:'#1d6fa4',pointRadius:8},
+    {label:'Segway Navimow',data:[{x:4,y:4}],backgroundColor:'#0d8a6f',pointRadius:8},
+    {label:'Mammotion Luba',data:[{x:3.5,y:4}],backgroundColor:'#c0860a',pointRadius:8},
+    {label:'Worx Landroid',data:[{x:4,y:3}],backgroundColor:'#6c3db5',pointRadius:8}
+  ]},
+  options:{
+    responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'bottom',labels:{font:{size:11}},onClick:null}},
+    scales:{
+      x:{min:1,max:6,title:{display:true,text:'价格水平（低→高）',font:{size:11}},grid:{color:'rgba(132,132,132,.15)'}},
+      y:{min:2,max:5,title:{display:true,text:'性能/产品力（低→高）',font:{size:11}},grid:{color:'rgba(132,132,132,.15)'}}
+    }
+  }
+});
+
+// 竞争力雷达图
+new Chart(document.getElementById('radarChart'),{
+  type:'radar',
+  data:{labels:['产品力','价格优势','渠道广度','技术水平','品牌力','模块化生态'],
+    datasets:[
+      {label:'Yarbo',data:[4,3,3,4,3,5],backgroundColor:'rgba(184,51,106,.15)',borderColor:'#b8336a',pointBackgroundColor:'#b8336a',borderWidth:2},
+      {label:'Husqvarna',data:[4,2,5,4,5,2],backgroundColor:'rgba(29,111,164,.1)',borderColor:'#1d6fa4',pointBackgroundColor:'#1d6fa4',borderWidth:1.5},
+      {label:'Segway Navimow',data:[4,4,4,5,4,2],backgroundColor:'rgba(13,138,111,.1)',borderColor:'#0d8a6f',pointBackgroundColor:'#0d8a6f',borderWidth:1.5},
+      {label:'Mammotion Luba',data:[4,3,3,5,3,2],backgroundColor:'rgba(192,134,10,.1)',borderColor:'#c0860a',pointBackgroundColor:'#c0860a',borderWidth:1.5}
+    ]
+  },
+  options:{responsive:true,maintainAspectRatio:false,
+    plugins:{legend:{position:'bottom',labels:{font:{size:11}}}},
+    scales:{r:{beginAtZero:true,max:5,ticks:{stepSize:1,color:'#8a9bb5',font:{size:10}},
+      grid:{color:'rgba(132,132,132,.2)'},angleLines:{color:'rgba(132,132,132,.25)'},
+      pointLabels:{color:'#2C2C2A',font:{size:11,weight:'500'}}}}
+  }
+});
+</script>
+</body>
+</html>
